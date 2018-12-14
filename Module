@@ -17,3 +17,4 @@ Sub exportToXl()
     DoCmd.TransferSpreadsheet transfertype = acExport, spreadsheettype:=acSpreadsheetTypeExcel12, Tablename:=dbQryTbl, FileName:=xlWorksheetPath, hasfieldnames:=True
     
     
+End Sub
