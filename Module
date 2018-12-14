@@ -1,0 +1,36 @@
+Sub exportToXl()
+' Vba code to export access data to excel
+' Export access data to erxcel without opening the excel workbook
+
+' Without an on error statement, any run-time error that occurs is fatal: an error message is displayed, and execution stops.
+'   enables an error-handling routine and specifies the location of the routine within a procedure; can also be used to disable an error-handling routine.
+'   GoTo - Direct error to location or line #
+
+    
+    ' Declare your variables
+    Dim dbQryTbl As String
+    Dim xlWorksheetPath As String
+    
+    'Mention the xlWorkbook path
+    xlWorksheetPath = "C:\Users\tcrooks\Desktop\Automation\Web\"
+    
+    'Replace the 'xlWorkbookName.xlsx' with your workbook name
+    xlWorksheetPath = xlWorksheetPath & "xlExportAccessToExcel.xls"
+    
+    'Replace tblMaster (QueryMaster..?) with the table in the Access DB from which you want to export the data
+    dbQryTbl = "Web_Automation"
+    
+    ' Use the TransferSpreadsheet Method of the DoCMD Object to export the data
+    '
+    '   DoCMD object to run Microsoft Office Acces actions from Visua Basic.
+    'TransferSpreadsheet (TransferType, SpreadsheetType, TableName (Query Name?), FileName, HasFieldNames, Range, UseOA)
+    '   TransferType Optional The Type of transfer you want to make acExport = The data is exported
+    '   SpreadsheetType Optional - Type of spreadsheet to export to/import from/link to; acSpreadsheetTypeExcell - Microsoft Excel 2010(?) format
+    '   TableName Optional -
+    '   FileName Optional -
+    '   HasFieldName Optional - When you export access tabler or selket query data to a spreadsheet, the fieeld names are inserted into the first row of the
+    '   spreadsheet no matter what you enter for this argument.
+    
+    DoCmd.TransferSpreadsheet transfertype = acExport, spreadsheettype:=acSpreadsheetTypeExcel12, Tablename:=dbQryTbl, FileName:=xlWorksheetPath, hasfieldnames:=True
+    
+    
